@@ -17,6 +17,11 @@ npm run build
 
 The Railway **Dockerfile** serves `dist/` with **nginx** so each route (`/contact`, `/solutions`, …) returns that folder’s `index.html`. Using Node `serve` (especially with `--single`) can incorrectly send **every** URL to the home page—the browser URL changes but the document stays **`Home · Bycon`**.
 
+### Robust URLs (www, ports, HTTPS)
+
+- **Origin (nginx):** `www.bycon.net` is **301 → `https://bycon.net`** (canonical apex).
+- **Edge (Cloudflare):** add rules so mistaken ports (e.g. `:8080`) and HTTPS policy are handled **before** Railway—see **`deploy/CLOUDFLARE.md`**.
+
 ## Environment variables
 
 Copy `.env.example` to `.env` for local testing.

@@ -1,7 +1,17 @@
 # Railway sets PORT at runtime; nginx official image runs envsubst on *.template
+#
+# www → apex: browsers hitting www get a 301 to https://bycon.net (canonical host).
+# Railway's *.up.railway.app hostname hits the catch-all server block below.
+
 server {
     listen       ${PORT};
-    server_name  _;
+    server_name  www.bycon.net;
+    return       301 https://bycon.net$request_uri;
+}
+
+server {
+    listen       ${PORT} default_server;
+    server_name  bycon.net;
     root         /usr/share/nginx/html;
     index        index.html;
 
