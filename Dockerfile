@@ -1,4 +1,4 @@
-# Build static site, then serve with `serve` (reads PORT from Railway).
+# Build static site; serve with nginx (correct per-route HTML — avoids SPA-style fallback).
 FROM node:20-bookworm-slim AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
@@ -6,11 +6,8 @@ RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM node:20-bookworm-slim AS runner
-WORKDIR /app
-ENV NODE_ENV=production
-RUN npm install -g serve@14
-COPY --from=build /app/dist ./dist
-EXPOSE 3000
-# No `-s` (--single): that mode sends every URL to index.html and breaks Astro multi-page routes.
-CMD ["sh", "-c", "serve dist -l \"tcp://0.0.0.0:${PORT:-3000}\""]
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY docker/nginx/default.conf.template /etc/nginx/templates/default.conf.template
+ENV PORT=8080
+EXPOSE 8080

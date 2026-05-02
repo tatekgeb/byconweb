@@ -1,0 +1,15 @@
+# Railway sets PORT at runtime; nginx official image runs envsubst on *.template
+server {
+    listen       ${PORT};
+    server_name  _;
+    root         /usr/share/nginx/html;
+    index        index.html;
+
+    location / {
+        # Astro static export: /about → about/index.html (never fall back to SPA root index.html)
+        try_files $uri $uri/ $uri/index.html $uri.html =404;
+    }
+
+    gzip on;
+    gzip_types text/plain text/css application/javascript application/json image/svg+xml;
+}
