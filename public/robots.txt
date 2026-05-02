@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bycon.com/sitemap.xml

@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSite } from '../lib/site';
+
+const { salesEmail, tmsUrl } = getSite();
+---
+<Layout
+  title="Pricing"
+  description="Bycon TMS pricing is tailored to your operation size, integrations, and support needs. Request a conversation to scope a package."
+>
+  <article class="prose" style="max-width: 48rem;">
+    <h1>Pricing</h1>
+    <p class="lead">
+      We do not publish one-size-fits-all list prices. Transport operations vary widely in trip volume, markets,
+      compliance requirements, and integrations—so we scope each relationship with a short discovery conversation.
+    </p>
+
+    <div class="pricing-grid">
+      <section
+        style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; box-shadow: 0 1px 2px rgba(15,23,42,0.04);"
+      >
+        <h2 style="margin: 0 0 0.25rem; font-size: 1.125rem;">Pilot &amp; growth</h2>
+        <p style="margin: 0; font-size: 0.875rem; color: var(--muted);">
+          For teams validating the platform or rolling out a region—core TMS, training, and standard support windows.
+        </p>
+        <ul style="margin: 0.75rem 0 0; font-size: 0.875rem; color: var(--muted);">
+          <li>Onboarding and configuration support</li>
+          <li>Core broker and field workflows</li>
+          <li>Documentation and audit-friendly trip history</li>
+        </ul>
+      </section>
+      <section
+        style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; box-shadow: 0 1px 2px rgba(15,23,42,0.04);"
+      >
+        <h2 style="margin: 0 0 0.25rem; font-size: 1.125rem;">Scale</h2>
+        <p style="margin: 0; font-size: 0.875rem; color: var(--muted);">
+          For higher trip volume, multiple markets, or deeper integration with your data and operations stack.
+        </p>
+        <ul style="margin: 0.75rem 0 0; font-size: 0.875rem; color: var(--muted);">
+          <li>Expanded support and success coverage</li>
+          <li>Integration and data migration assistance</li>
+          <li>Stricter uptime and response expectations (as agreed)</li>
+        </ul>
+      </section>
+      <section
+        style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; box-shadow: 0 1px 2px rgba(15,23,42,0.04);"
+      >
+        <h2 style="margin: 0 0 0.25rem; font-size: 1.125rem;">Enterprise</h2>
+        <p style="margin: 0; font-size: 0.875rem; color: var(--muted);">
+          For large broker or health-plan contexts with custom requirements, security review, and dedicated alignment.
+        </p>
+        <ul style="margin: 0.75rem 0 0; font-size: 0.875rem; color: var(--muted);">
+          <li>Security and procurement alignment</li>
+          <li>Custom terms and support as needed</li>
+          <li>Dedicated contact for operations and IT</li>
+        </ul>
+      </section>
+    </div>
+
+    <p>
+      <a
+        href={`mailto:${salesEmail}?subject=Bycon%20TMS%20pricing%20conversation`}
+        style="display: inline-block; padding: 0.65rem 1.15rem; background: var(--accent); color: #fff !important; border-radius: var(--radius); text-decoration: none; font-weight: 600; font-size: 0.9375rem;"
+      >
+        Talk to sales
+      </a>
+      <span style="display: inline-block; margin-left: 0.75rem; font-size: 0.875rem; color: var(--muted);">
+        or explore the product at <a href={tmsUrl}>{tmsUrl.replace(/^https?:\/\//, '')}</a>
+      </span>
+    </p>
+  </article>
+</Layout>

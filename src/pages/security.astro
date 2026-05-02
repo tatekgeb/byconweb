@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSite } from '../lib/site';
+
+const { securityEmail } = getSite();
+---
+<Layout
+  title="Security"
+  description="How Bycon approaches security for our services—overview for customers and prospects evaluating our transport platform."
+>
+  <article class="prose" style="max-width: 42rem;">
+    <h1>Security</h1>
+    <p class="lead">
+      We design our software for organizations that take compliance and data stewardship seriously. This page summarizes
+      our posture at a high level; your order form or agreement may include additional commitments.
+    </p>
+
+    <h2>Product and infrastructure</h2>
+    <p>
+      Our transport management application runs on managed cloud infrastructure with network controls, encryption in
+      transit for browser sessions (HTTPS), and access restrictions aligned to operational need. We patch and monitor
+      systems as part of normal operations.
+    </p>
+
+    <h2>Access and authentication</h2>
+    <p>
+      Access to production environments and customer data is limited to authorized personnel and tied to business need.
+      Customers authenticate to the TMS through application mechanisms defined in the product; we encourage strong
+      passwords and role-appropriate permissions inside your organization.
+    </p>
+
+    <h2>Data handling</h2>
+    <p>
+      Trip and operational data belong to your organization’s workflow; we process it to deliver the service you
+      subscribed to. Specific retention, subprocessors, and data processing terms may be addressed in your contract or a
+      data protection addendum where applicable.
+    </p>
+
+    <h2>Vulnerability reports</h2>
+    <p>
+      If you believe you have found a security issue related to Bycon services, please email us with enough detail to
+      reproduce the concern. We appreciate responsible disclosure and will work with you to understand and address valid
+      findings.
+    </p>
+    <p>
+      <a href={`mailto:${securityEmail}?subject=Security%20report`}>{securityEmail}</a>
+    </p>
+
+    <h2>Limitation</h2>
+    <p style="font-size: 0.875rem;">
+      No cloud service can guarantee absolute security. This page is informational and may be updated as our practices
+      evolve.
+    </p>
+  </article>
+</Layout>

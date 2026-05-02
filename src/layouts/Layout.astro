@@ -1,0 +1,196 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Bycon builds operations software for transportation providers.' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const pageTitle = `${title} · Bycon`;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Bycon" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <title>{pageTitle}</title>
+    <slot name="head" />
+    <style is:global>
+      :root {
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --text: #0f172a;
+        --muted: #475569;
+        --accent: #1d4ed8;
+        --accent-hover: #1e40af;
+        --border: #e2e8f0;
+        --radius: 12px;
+        --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: var(--font);
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      a {
+        color: var(--accent);
+      }
+      a:hover {
+        color: var(--accent-hover);
+      }
+      .wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+      }
+      header.site {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+      }
+      header.site .inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+        min-height: 3.5rem;
+        padding: 0.5rem 0;
+      }
+      .logo {
+        font-weight: 700;
+        font-size: 1.125rem;
+        color: var(--text);
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+      nav.main-nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.35rem 1rem;
+        justify-content: flex-end;
+      }
+      nav.main-nav a {
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      nav.main-nav a:hover {
+        color: var(--accent);
+      }
+      .prose {
+        max-width: 40rem;
+      }
+      .prose h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem;
+        letter-spacing: -0.02em;
+      }
+      .prose h2 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin: 1.75rem 0 0.5rem;
+      }
+      .prose p,
+      .prose li {
+        color: var(--text);
+        font-size: 0.9375rem;
+      }
+      .prose p {
+        margin: 0 0 1rem;
+        color: var(--muted);
+      }
+      .prose ul {
+        margin: 0 0 1rem;
+        padding-left: 1.15rem;
+        color: var(--muted);
+        font-size: 0.9375rem;
+      }
+      .prose .lead {
+        font-size: 1.0625rem;
+        color: var(--muted);
+      }
+      footer.site .foot-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.25rem;
+        margin-bottom: 0.75rem;
+      }
+      footer.site .foot-links a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      footer.site .foot-links a:hover {
+        color: var(--accent);
+      }
+      .pricing-grid {
+        display: grid;
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+      @media (min-width: 768px) {
+        .pricing-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      main {
+        padding: 2.5rem 0 4rem;
+      }
+      footer.site {
+        border-top: 1px solid var(--border);
+        background: var(--surface);
+        padding: 1.5rem 0;
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap inner">
+        <a class="logo" href="/">Bycon</a>
+        <nav class="main-nav" aria-label="Primary">
+          <a href="/">Home</a>
+          <a href="/solutions">Solutions</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/about">About</a>
+          <a href="/careers">Careers</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="wrap">
+        <slot />
+      </div>
+    </main>
+    <footer class="site">
+      <div class="wrap">
+        <div class="foot-links">
+          <a href="/privacy">Privacy</a>
+          <a href="/security">Security</a>
+          <a href="/terms">Terms</a>
+        </div>
+        <div>© {new Date().getFullYear()} Bycon. All rights reserved.</div>
+      </div>
+    </footer>
+  </body>
+</html>

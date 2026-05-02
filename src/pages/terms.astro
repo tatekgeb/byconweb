@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSite } from '../lib/site';
+
+const { contactEmail } = getSite();
+---
+<Layout
+  title="Terms of service"
+  description="Terms governing use of the Bycon marketing website. Product terms are set in your separate agreement."
+>
+  <article class="prose" style="max-width: 42rem;">
+    <h1>Terms of service (website)</h1>
+    <p style="font-size: 0.8125rem; color: var(--muted); margin-bottom: 1.5rem;">
+      Last updated: April 29, 2026. These terms apply to this marketing site. Use of the Bycon TMS or other paid services is
+      governed by your order form and applicable agreement—not by this page alone.
+    </p>
+
+    <h2>Acceptance</h2>
+    <p>
+      By accessing <strong>bycon.com</strong> (and related marketing pages), you agree to these terms. If you do not agree, do
+      not use the site.
+    </p>
+
+    <h2>Use of the site</h2>
+    <p>
+      You may browse and use contact links for lawful business purposes. You may not attempt to disrupt the site, probe
+      systems without authorization, scrape in violation of our robots policy (if any), or misuse any contact channels.
+    </p>
+
+    <h2>Intellectual property</h2>
+    <p>
+      Content on this site (text, branding, layout) is owned by Bycon or used with permission. You may not copy or reuse it
+      for commercial purposes without prior written consent, except as allowed by law.
+    </p>
+
+    <h2>Disclaimer</h2>
+    <p>
+      This site is provided “as is.” Descriptions of products and roadmaps are informational and may change. We disclaim
+      warranties to the extent permitted by law.
+    </p>
+
+    <h2>Limitation of liability</h2>
+    <p>
+      To the fullest extent permitted by law, Bycon is not liable for indirect or consequential damages arising from your
+      use of this marketing site, or for any loss arising from reliance on site content.
+    </p>
+
+    <h2>Governing law</h2>
+    <p>
+      These terms are governed by the laws of the State of Delaware, USA, excluding conflict-of-law rules, unless a
+      different governing law is mandatory where you reside.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about these terms:{' '}
+      <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+    </p>
+  </article>
+</Layout>

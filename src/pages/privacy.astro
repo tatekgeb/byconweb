@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSite } from '../lib/site';
+
+const { privacyEmail } = getSite();
+---
+<Layout
+  title="Privacy"
+  description="Bycon privacy policy — how we handle personal information when you use our websites and services."
+>
+  <article class="prose" style="max-width: 42rem;">
+    <h1>Privacy policy</h1>
+    <p style="font-size: 0.8125rem; color: var(--muted); margin-bottom: 1.5rem;">
+      Last updated: April 29, 2026. This document is a starting point for a commercial site; have counsel review before
+      relying on it in regulated contexts.
+    </p>
+
+    <h2>Who we are</h2>
+    <p>
+      This policy describes how Bycon (“we,” “us”) collects and uses information when you visit <strong>bycon.com</strong> (this
+      marketing site) or contact us. Our transport management product is hosted at a separate URL (for example{' '}
+      <strong>tms.bycon.com</strong>); that application may be covered by additional terms and notices presented at login or in
+      your agreement.
+    </p>
+
+    <h2>Information we collect</h2>
+    <p><strong>Website.</strong> We may collect standard server and analytics data such as approximate location (derived from IP),
+      browser type, pages viewed, and referring URLs. If you email us, we receive whatever you include in your message.</p>
+    <p><strong>Product.</strong> Use of the TMS is governed by your contract and product-specific notices. Typical categories there
+      include account identifiers, trip and operational data you enter, and technical logs needed to run and secure the service.</p>
+
+    <h2>How we use information</h2>
+    <p>We use information to operate and improve our sites and products, respond to inquiries, secure our systems, comply with law,
+      and understand aggregate usage patterns. We do not sell personal information as that term is commonly defined in U.S. state
+      privacy laws.</p>
+
+    <h2>Sharing</h2>
+    <p>We may share information with service providers who assist us (for example hosting, email, or analytics), subject to
+      confidentiality and appropriate safeguards. We may disclose information if required by law or to protect rights and safety.</p>
+
+    <h2>Retention</h2>
+    <p>We keep information only as long as needed for the purposes above, unless a longer period is required by law or contract.</p>
+
+    <h2>Your choices</h2>
+    <p>Depending on where you live, you may have rights to access, correct, or delete certain personal information, or to object to
+      some processing. Contact us at the address below to make a request. We may need to verify your identity before responding.</p>
+
+    <h2>International transfers</h2>
+    <p>If you access our services from outside the United States, your information may be processed in the United States or other
+      countries where we or our providers operate.</p>
+
+    <h2>Children</h2>
+    <p>Our marketing site and business products are not directed at children under 13, and we do not knowingly collect their
+      personal information.</p>
+
+    <h2>Contact</h2>
+    <p>
+      For privacy questions or requests:{' '}
+      <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>
+    </p>
+  </article>
+</Layout>

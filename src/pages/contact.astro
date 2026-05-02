@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSite } from '../lib/site';
+
+const { contactEmail, salesEmail, tmsUrl } = getSite();
+---
+<Layout
+  title="Contact"
+  description="Contact Bycon for product questions, demos, and partnership inquiries."
+>
+  <article class="prose">
+    <h1>Contact</h1>
+    <p class="lead">
+      Whether you are exploring the TMS, need a walkthrough, or want to talk about a larger deployment, we read every
+      message.
+    </p>
+    <h2>Product &amp; general</h2>
+    <p>
+      <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+    </p>
+    <h2>Sales &amp; demos</h2>
+    <p>
+      <a href={`mailto:${salesEmail}`}>{salesEmail}</a>
+    </p>
+    <h2>Already a customer?</h2>
+    <p>
+      Your team may have a dedicated support path; if you are unsure, use the product address above and we will route
+      you. The live application is hosted separately at{' '}
+      <a href={tmsUrl} rel="noopener noreferrer">{tmsUrl.replace(/^https?:\/\//, '')}</a>.
+    </p>
+  </article>
+</Layout>

@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSite } from '../lib/site';
+
+const { careersEmail } = getSite();
+---
+<Layout
+  title="Careers"
+  description="Careers at Bycon — we build operations software for transportation. Reach out if you want to help."
+>
+  <article class="prose">
+    <h1>Careers</h1>
+    <p class="lead">
+      Bycon is building serious operations tools for transportation networks—primarily a transport management platform
+      for brokers and providers in NEMT and adjacent markets. We value clarity, ownership, and respect for the people
+      who run trips every day.
+    </p>
+    <h2>Open roles</h2>
+    <p>
+      We post specific openings here when they are active. If you do not see a match but believe you would strengthen
+      the team, send a short note and a résumé or link to your work.
+    </p>
+    <p>
+      <a href={`mailto:${careersEmail}?subject=Careers%20inquiry`}>{careersEmail}</a>
+    </p>
+    <h2>What to expect</h2>
+    <p>
+      We are a small, product-focused company. You will work across problem spaces—product, customer success, and
+      reliable systems—without heavy ceremony. We care that software holds up in the field and in audits, not just in a
+      slide deck.
+    </p>
+  </article>
+</Layout>
