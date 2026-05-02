@@ -23,6 +23,7 @@ Copy `.env.example` to `.env` for local testing.
 - `PUBLIC_CONTACT_EMAIL`
 - `PUBLIC_SALES_EMAIL`
 - `PUBLIC_PRIVACY_EMAIL`
+- `PUBLIC_LEGAL_EMAIL` (optional; defaults to `PUBLIC_PRIVACY_EMAIL`; used on Privacy Policy for legal / SMS help contact)
 - `PUBLIC_SECURITY_EMAIL`
 - `PUBLIC_CAREERS_EMAIL`
 

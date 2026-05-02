@@ -1,60 +1,219 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import LegalSubnav from '../components/LegalSubnav.astro';
 import { getSite } from '../lib/site';
 
-const { contactEmail } = getSite();
+const { legalEmail } = getSite();
+
+const description =
+  'Terms & Conditions for the Bycon Transport Management System, related sites and apps, including SMS and acceptable use.';
 ---
-<Layout
-  title="Terms of service"
-  description="Terms governing use of the Bycon marketing website. Product terms are set in your separate agreement."
->
-  <article class="prose" style="max-width: 42rem;">
-    <h1>Terms of service (website)</h1>
-    <p style="font-size: 0.8125rem; color: var(--muted); margin-bottom: 1.5rem;">
-      Last updated: April 29, 2026. These terms apply to this marketing site. Use of the Bycon TMS or other paid services is
-      governed by your order form and applicable agreement—not by this page alone.
+<Layout title="Terms & Conditions" description={description}>
+  <article class="prose terms-doc">
+    <LegalSubnav current="terms" />
+
+    <header class="terms-header">
+      <h1>Terms &amp; Conditions</h1>
+      <p class="effective-date"><strong>Effective date:</strong> March 29, 2026</p>
+    </header>
+
+    <p>
+      These Terms &amp; Conditions (“Terms”) govern your access to and use of the Transport Management System and related
+      websites, applications, and services (collectively, the “Services”) offered by or on behalf of{' '}
+      <strong>Bycon</strong> (“Operator,” “we,” “us,” or “our”). By accessing or using the Services, you agree to these Terms.
+      If you do not agree, do not use the Services.
+    </p>
+    <p>
+      If you use the Services on behalf of an organization, you represent that you have authority to bind that organization,
+      and “you” includes that organization.
     </p>
 
-    <h2>Acceptance</h2>
-    <p>
-      By accessing <strong>bycon.com</strong> (and related marketing pages), you agree to these terms. If you do not agree, do
-      not use the site.
-    </p>
+    <section class="terms-section" id="services" aria-labelledby="h-services">
+      <h2 id="h-services">1. The Services</h2>
+      <p>
+        The Services support transportation and workforce operations, which may include scheduling, dispatch-related features,
+        driver or staff tools, timesheets, document handling, and communications such as email or SMS notifications. Features
+        vary by deployment and user role. We may modify, suspend, or discontinue any part of the Services with reasonable
+        notice where practicable.
+      </p>
+    </section>
 
-    <h2>Use of the site</h2>
-    <p>
-      You may browse and use contact links for lawful business purposes. You may not attempt to disrupt the site, probe
-      systems without authorization, scrape in violation of our robots policy (if any), or misuse any contact channels.
-    </p>
+    <section class="terms-section" id="eligibility" aria-labelledby="h-eligibility">
+      <h2 id="h-eligibility">2. Eligibility and accounts</h2>
+      <p>
+        You must provide accurate registration information and keep credentials confidential. You are responsible for activity
+        under your account. Notify us promptly at{' '}
+        <a href={`mailto:${legalEmail}`}>{legalEmail}</a> if you suspect unauthorized access.
+      </p>
+    </section>
 
-    <h2>Intellectual property</h2>
-    <p>
-      Content on this site (text, branding, layout) is owned by Bycon or used with permission. You may not copy or reuse it
-      for commercial purposes without prior written consent, except as allowed by law.
-    </p>
+    <section class="terms-section" id="sms-terms" aria-labelledby="h-sms-terms">
+      <h2 id="h-sms-terms">3. Text messaging (SMS) terms</h2>
+      <p>
+        By providing your mobile number and opting in where consent is required, you consent to receive text messages from us
+        relating to the Services as described at the point of collection (for example, trip updates or operational notices).
+      </p>
+      <ul>
+        <li><strong>Frequency:</strong> Message frequency varies based on your interactions and service settings.</li>
+        <li><strong>Cost:</strong> Message and data rates may apply; contact your carrier with questions about your plan.</li>
+        <li>
+          <strong>Opt-out:</strong> You may opt out of promotional texts as instructed in those messages (e.g., STOP).
+          Operational messages may continue where permitted.
+        </li>
+        <li>
+          <strong>Support:</strong> Reply HELP or email{' '}
+          <a href={`mailto:${legalEmail}`}>{legalEmail}</a>.
+        </li>
+        <li>
+          <strong>Carriers:</strong> Participating carriers may change; we are not responsible for delays or failures by carriers
+          or networks.
+        </li>
+      </ul>
+      <p>
+        Our collection and use of phone numbers and related data is described in our{' '}
+        <a href="/privacy">Privacy Policy</a>.
+      </p>
+    </section>
 
-    <h2>Disclaimer</h2>
-    <p>
-      This site is provided “as is.” Descriptions of products and roadmaps are informational and may change. We disclaim
-      warranties to the extent permitted by law.
-    </p>
+    <section class="terms-section" id="acceptable-use" aria-labelledby="h-acceptable-use">
+      <h2 id="h-acceptable-use">4. Acceptable use</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>Violate law or third-party rights;</li>
+        <li>Attempt to gain unauthorized access to the Services, other accounts, or our systems;</li>
+        <li>Interfere with or disrupt the Services or infrastructure;</li>
+        <li>Use the Services to send spam, unlawful, or misleading communications;</li>
+        <li>Reverse engineer, scrape, or misuse the Services except as permitted by applicable law;</li>
+        <li>Use the Services in any way that could harm passengers, the public, or transportation safety.</li>
+      </ul>
+    </section>
 
-    <h2>Limitation of liability</h2>
-    <p>
-      To the fullest extent permitted by law, Bycon is not liable for indirect or consequential damages arising from your
-      use of this marketing site, or for any loss arising from reliance on site content.
-    </p>
+    <section class="terms-section" id="content" aria-labelledby="h-content">
+      <h2 id="h-content">5. Content and data</h2>
+      <p>
+        You retain your rights in content you submit. You grant us a license to use, store, and process such content as needed
+        to provide and improve the Services and comply with law. You represent that you have the rights necessary to grant
+        this license.
+      </p>
+    </section>
 
-    <h2>Governing law</h2>
-    <p>
-      These terms are governed by the laws of the State of Delaware, USA, excluding conflict-of-law rules, unless a
-      different governing law is mandatory where you reside.
-    </p>
+    <section class="terms-section" id="third-party" aria-labelledby="h-third-party">
+      <h2 id="h-third-party">6. Third-party services</h2>
+      <p>
+        The Services may integrate with or link to third-party services (maps, messaging providers, payment processors, etc.).
+        Those services are governed by their own terms and privacy policies; we are not responsible for third-party services.
+      </p>
+    </section>
 
-    <h2>Contact</h2>
-    <p>
-      Questions about these terms:{' '}
-      <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+    <section class="terms-section" id="disclaimers" aria-labelledby="h-disclaimers">
+      <h2 id="h-disclaimers">7. Disclaimers</h2>
+      <p class="terms-legalcaps">
+        THE SERVICES ARE PROVIDED “AS IS” AND “AS AVAILABLE” WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED,
+        INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT, TO THE FULLEST
+        EXTENT PERMITTED BY LAW. TRANSPORTATION SERVICES MAY BE PROVIDED BY THIRD PARTIES; THE OPERATOR’S SOFTWARE DOES NOT
+        REPLACE COMPLIANCE WITH APPLICABLE TRANSPORTATION, SAFETY, OR INSURANCE REQUIREMENTS.
+      </p>
+    </section>
+
+    <section class="terms-section" id="liability" aria-labelledby="h-liability">
+      <h2 id="h-liability">8. Limitation of liability</h2>
+      <p class="terms-legalcaps">
+        TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE OPERATOR AND ITS AFFILIATES, OFFICERS, EMPLOYEES, AND SUPPLIERS WILL NOT BE
+        LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, DATA, OR
+        GOODWILL, ARISING FROM OR RELATED TO YOUR USE OF THE SERVICES. OUR AGGREGATE LIABILITY FOR CLAIMS ARISING OUT OF OR
+        RELATING TO THE SERVICES OR THESE TERMS WILL NOT EXCEED THE GREATER OF (A) THE AMOUNTS YOU PAID US FOR THE SERVICES IN
+        THE TWELVE (12) MONTHS BEFORE THE CLAIM OR (B) ONE HUNDRED U.S. DOLLARS (US$100), IF NO FEES WERE PAID. SOME
+        JURISDICTIONS DO NOT ALLOW CERTAIN LIMITATIONS; IN THOSE CASES, OUR LIABILITY WILL BE LIMITED TO THE FULLEST EXTENT
+        PERMITTED BY LAW.
+      </p>
+    </section>
+
+    <section class="terms-section" id="indemnity" aria-labelledby="h-indemnity">
+      <h2 id="h-indemnity">9. Indemnity</h2>
+      <p>
+        You will defend, indemnify, and hold harmless the Operator and its affiliates from claims, damages, losses, and
+        expenses (including reasonable attorneys’ fees) arising from your use of the Services, your content, or your violation
+        of these Terms, except to the extent caused by our gross negligence or willful misconduct.
+      </p>
+    </section>
+
+    <section class="terms-section" id="termination" aria-labelledby="h-termination">
+      <h2 id="h-termination">10. Termination</h2>
+      <p>
+        We may suspend or terminate access to the Services for violation of these Terms or for operational or legal reasons. You
+        may stop using the Services at any time. Provisions that by their nature should survive (including disclaimers,
+        limitations, indemnity, and governing law) will survive termination.
+      </p>
+    </section>
+
+    <section class="terms-section" id="law" aria-labelledby="h-law">
+      <h2 id="h-law">11. Governing law and disputes</h2>
+      <p>
+        These Terms are governed by the laws of the United States and the state in which the Operator is organized, without
+        regard to conflict-of-law rules, except where mandatory consumer protection laws of your jurisdiction apply. Courts in
+        that state (or federal courts located there, if applicable) will have exclusive jurisdiction for disputes, unless a
+        different forum is required by law.
+      </p>
+    </section>
+
+    <section class="terms-section" id="changes" aria-labelledby="h-changes">
+      <h2 id="h-changes">12. Changes</h2>
+      <p>
+        We may update these Terms from time to time. We will post the revised Terms with an updated effective date. Continued
+        use after changes become effective constitutes acceptance, except where applicable law requires additional consent.
+      </p>
+    </section>
+
+    <section class="terms-section" id="contact" aria-labelledby="h-contact">
+      <h2 id="h-contact">13. Contact</h2>
+      <p>
+        Questions about these Terms: <strong>Bycon</strong>,{' '}
+        <a href={`mailto:${legalEmail}`}>{legalEmail}</a>.
+      </p>
+    </section>
+
+    <p class="terms-footnote">
+      These Terms are a practical template for a transportation-related software service. They are not a substitute for legal
+      advice; have them reviewed by qualified counsel for your organization and jurisdiction.
     </p>
   </article>
+
+  <style>
+    .terms-doc {
+      max-width: 42rem;
+    }
+    .terms-header {
+      margin-bottom: 0.25rem;
+    }
+    .terms-header h1 {
+      margin-bottom: 0.35rem;
+    }
+    .effective-date {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      margin: 0 0 1.25rem;
+    }
+    .terms-section h2 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin: 1.75rem 0 0.5rem;
+      scroll-margin-top: 4rem;
+    }
+    .terms-legalcaps {
+      font-size: 0.8125rem;
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+      padding: 1rem 1.1rem;
+      background: rgba(15, 23, 42, 0.03);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .terms-footnote {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
 </Layout>

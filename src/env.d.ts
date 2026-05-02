@@ -6,6 +6,7 @@ interface ImportMetaEnv {
   readonly PUBLIC_CONTACT_EMAIL?: string;
   readonly PUBLIC_SALES_EMAIL?: string;
   readonly PUBLIC_PRIVACY_EMAIL?: string;
+  readonly PUBLIC_LEGAL_EMAIL?: string;
   readonly PUBLIC_SECURITY_EMAIL?: string;
   readonly PUBLIC_CAREERS_EMAIL?: string;
 }

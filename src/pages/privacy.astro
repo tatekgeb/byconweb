@@ -1,62 +1,210 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import LegalSubnav from '../components/LegalSubnav.astro';
 import { getSite } from '../lib/site';
 
-const { privacyEmail } = getSite();
+const { privacyEmail, legalEmail } = getSite();
+
+const description =
+  'Bycon Privacy Policy — how we collect, use, disclose, and protect information in connection with the Transport Management System, websites, and related services, including SMS.';
 ---
-<Layout
-  title="Privacy"
-  description="Bycon privacy policy — how we handle personal information when you use our websites and services."
->
-  <article class="prose" style="max-width: 42rem;">
-    <h1>Privacy policy</h1>
-    <p style="font-size: 0.8125rem; color: var(--muted); margin-bottom: 1.5rem;">
-      Last updated: April 29, 2026. This document is a starting point for a commercial site; have counsel review before
-      relying on it in regulated contexts.
+<Layout title="Privacy Policy" description={description}>
+  <article class="prose privacy-doc">
+    <LegalSubnav current="privacy" />
+
+    <h1>Privacy Policy</h1>
+    <p class="effective-date"><strong>Effective date:</strong> March 29, 2026</p>
+
+    <p>
+      This Privacy Policy describes how <strong>Bycon</strong> (“we,” “us,” or “our”) collects, uses, discloses, and protects
+      information in connection with the Transport Management System and related services (the “Services”), including when
+      we send you text messages. By using the Services or providing your information to us, you agree to this Policy unless
+      a separate agreement states otherwise.
     </p>
 
-    <h2>Who we are</h2>
-    <p>
-      This policy describes how Bycon (“we,” “us”) collects and uses information when you visit <strong>bycon.com</strong> (this
-      marketing site) or contact us. Our transport management product is hosted at a separate URL (for example{' '}
-      <strong>tms.bycon.com</strong>); that application may be covered by additional terms and notices presented at login or in
-      your agreement.
-    </p>
+    <section class="privacy-section" id="collect" aria-labelledby="h-collect">
+      <h2 id="h-collect">1. Information we collect</h2>
+      <p>We may collect the following categories of information, depending on how you use the Services:</p>
+      <ul>
+        <li>
+          <strong>Contact and identity data:</strong> name, email address, phone number, mailing address, employer or
+          contracting organization, and similar identifiers.
+        </li>
+        <li>
+          <strong>Account and authentication data:</strong> usernames, credentials, role, and security-related information.
+        </li>
+        <li>
+          <strong>Transportation and operations data:</strong> schedules, trips, routes, pickup and drop-off information,
+          vehicle or driver assignments, timesheets, and related operational records needed to provide transportation or
+          workforce management.
+        </li>
+        <li>
+          <strong>Communications:</strong> messages you send us, call or support logs, and records of SMS or other
+          notifications we send (including delivery status where available).
+        </li>
+        <li>
+          <strong>Device and technical data:</strong> IP address, browser or app version, device type, general location
+          derived from IP, and cookies or similar technologies when you use our websites or apps.
+        </li>
+      </ul>
+    </section>
 
-    <h2>Information we collect</h2>
-    <p><strong>Website.</strong> We may collect standard server and analytics data such as approximate location (derived from IP),
-      browser type, pages viewed, and referring URLs. If you email us, we receive whatever you include in your message.</p>
-    <p><strong>Product.</strong> Use of the TMS is governed by your contract and product-specific notices. Typical categories there
-      include account identifiers, trip and operational data you enter, and technical logs needed to run and secure the service.</p>
+    <section class="privacy-section" id="use" aria-labelledby="h-use">
+      <h2 id="h-use">2. How we use information</h2>
+      <p>We use information to:</p>
+      <ul>
+        <li>Provide, operate, maintain, and improve the Services;</li>
+        <li>Schedule and coordinate transportation and related workforce activities;</li>
+        <li>
+          Send transactional, operational, and service-related messages (including SMS) such as trip updates, reminders, and
+          security notices;
+        </li>
+        <li>Respond to inquiries, provide support, and enforce our terms;</li>
+        <li>Protect the security and integrity of our systems and users;</li>
+        <li>Comply with law, regulatory requirements, and lawful requests; and</li>
+        <li>
+          With appropriate consent where required, send marketing or promotional communications (you may opt out as described
+          in those messages or below).
+        </li>
+      </ul>
+    </section>
 
-    <h2>How we use information</h2>
-    <p>We use information to operate and improve our sites and products, respond to inquiries, secure our systems, comply with law,
-      and understand aggregate usage patterns. We do not sell personal information as that term is commonly defined in U.S. state
-      privacy laws.</p>
+    <section class="privacy-section" id="sms" aria-labelledby="h-sms">
+      <h2 id="h-sms">3. Text messages (SMS)</h2>
+      <p>
+        If you opt in to receive text messages from us, we will use your mobile number to send the types of messages
+        described at the point of opt-in (for example, trip notifications or account alerts). Message frequency varies based
+        on your use of the Services and your preferences.
+      </p>
+      <p>
+        <strong>Charges:</strong> Message and data rates may apply according to your carrier plan. Carriers are not liable
+        for delayed or undelivered messages.
+      </p>
+      <p>
+        <strong>Opt-out:</strong> You may opt out of promotional SMS at any time by following the instructions in the message
+        (e.g., replying STOP). For transactional or legally required messages, we may still send certain notices as permitted
+        by law or until your relationship with us ends; contact us if you have questions.
+      </p>
+      <p>
+        <strong>Help:</strong> Reply HELP for assistance or contact us at{' '}
+        <a href={`mailto:${legalEmail}`}>{legalEmail}</a>.
+      </p>
+      <p>
+        We do not sell your phone number or use it for unrelated third-party marketing without your consent where such
+        consent is required.
+      </p>
+    </section>
 
-    <h2>Sharing</h2>
-    <p>We may share information with service providers who assist us (for example hosting, email, or analytics), subject to
-      confidentiality and appropriate safeguards. We may disclose information if required by law or to protect rights and safety.</p>
+    <section class="privacy-section" id="share" aria-labelledby="h-share">
+      <h2 id="h-share">4. How we share information</h2>
+      <p>We may share information with:</p>
+      <ul>
+        <li>
+          <strong>Service providers</strong> who assist us (e.g., hosting, messaging/SMS delivery, mapping, analytics,
+          customer support) under contractual obligations to protect data;
+        </li>
+        <li>
+          <strong>Transportation partners or your organization,</strong> where necessary to deliver the Services you or they
+          have requested;
+        </li>
+        <li>
+          <strong>Legal and safety:</strong> when required by law, court order, or government request, or when we believe
+          disclosure is necessary to protect rights, safety, or security;
+        </li>
+        <li>
+          <strong>Business transfers:</strong> in connection with a merger, acquisition, or sale of assets, subject to
+          appropriate safeguards.
+        </li>
+      </ul>
+      <p>We do not sell personal information as the term “sale” is commonly defined in U.S. state privacy laws.</p>
+    </section>
 
-    <h2>Retention</h2>
-    <p>We keep information only as long as needed for the purposes above, unless a longer period is required by law or contract.</p>
+    <section class="privacy-section" id="retention" aria-labelledby="h-retention">
+      <h2 id="h-retention">5. Retention</h2>
+      <p>
+        We retain information for as long as needed to provide the Services, meet legal, tax, and accounting obligations,
+        resolve disputes, and enforce our agreements. Retention periods may vary by data type and jurisdiction.
+      </p>
+    </section>
 
-    <h2>Your choices</h2>
-    <p>Depending on where you live, you may have rights to access, correct, or delete certain personal information, or to object to
-      some processing. Contact us at the address below to make a request. We may need to verify your identity before responding.</p>
+    <section class="privacy-section" id="security" aria-labelledby="h-security">
+      <h2 id="h-security">6. Security</h2>
+      <p>
+        We implement reasonable technical and organizational measures designed to protect personal information. No method of
+        transmission or storage is completely secure; we cannot guarantee absolute security.
+      </p>
+    </section>
 
-    <h2>International transfers</h2>
-    <p>If you access our services from outside the United States, your information may be processed in the United States or other
-      countries where we or our providers operate.</p>
+    <section class="privacy-section" id="rights" aria-labelledby="h-rights">
+      <h2 id="h-rights">7. Your choices and rights</h2>
+      <p>
+        Depending on where you live, you may have rights to access, correct, delete, or restrict certain processing of your
+        personal information, or to object to or opt out of certain uses. To exercise applicable rights, contact us at the
+        email below. We may verify your request as permitted by law.
+      </p>
+    </section>
 
-    <h2>Children</h2>
-    <p>Our marketing site and business products are not directed at children under 13, and we do not knowingly collect their
-      personal information.</p>
+    <section class="privacy-section" id="children" aria-labelledby="h-children">
+      <h2 id="h-children">8. Children’s privacy</h2>
+      <p>
+        The Services are not directed to children under 13 (or the age required in your jurisdiction). We do not knowingly
+        collect personal information from children in violation of applicable law.
+      </p>
+    </section>
 
-    <h2>Contact</h2>
-    <p>
-      For privacy questions or requests:{' '}
-      <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>
+    <section class="privacy-section" id="international" aria-labelledby="h-international">
+      <h2 id="h-international">9. International users</h2>
+      <p>
+        If you access the Services from outside the country where we operate, your information may be processed in
+        countries that may not provide the same level of data protection as your home country. Where required, we use
+        appropriate safeguards.
+      </p>
+    </section>
+
+    <section class="privacy-section" id="changes" aria-labelledby="h-changes">
+      <h2 id="h-changes">10. Changes to this Policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. We will post the updated version with a revised effective date
+        and, where appropriate, provide additional notice (such as email or an in-app message).
+      </p>
+    </section>
+
+    <section class="privacy-section" id="contact" aria-labelledby="h-contact">
+      <h2 id="h-contact">11. Contact us</h2>
+      <p>
+        For questions about this Privacy Policy or our data practices, contact Bycon at{' '}
+        <a href={`mailto:${legalEmail}`}>{legalEmail}</a>. You may also reach our privacy team at{' '}
+        <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>.
+      </p>
+    </section>
+
+    <p class="privacy-footnote">
+      This policy is provided for general information and does not constitute legal advice. You may wish to have it reviewed
+      by counsel for your organization and jurisdiction.
     </p>
   </article>
+
+  <style>
+    .privacy-doc {
+      max-width: 42rem;
+    }
+    .effective-date {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      margin: 0 0 1.25rem;
+    }
+    .privacy-section h2 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin: 1.75rem 0 0.5rem;
+      scroll-margin-top: 4rem;
+    }
+    .privacy-footnote {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
 </Layout>

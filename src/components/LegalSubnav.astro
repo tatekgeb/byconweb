@@ -1,0 +1,73 @@
+---
+import { getSite } from '../lib/site';
+
+interface Props {
+  /** Which page is active for visual emphasis */
+  current?: 'privacy' | 'terms';
+}
+
+const { current } = Astro.props;
+const { tmsUrl } = getSite();
+---
+
+<nav class="legal-subnav" aria-label="Legal navigation">
+  <div class="legal-subnav-inner">
+    <a class="legal-subnav-link" href={tmsUrl} rel="noopener noreferrer">Sign in</a>
+    <span class="legal-subnav-sep" aria-hidden="true">|</span>
+    <a
+      class:list={['legal-subnav-link', { 'is-active': current === 'privacy' }]}
+      href="/privacy"
+      aria-current={current === 'privacy' ? 'page' : undefined}
+    >
+      Privacy Policy
+    </a>
+    <span class="legal-subnav-sep" aria-hidden="true">|</span>
+    <a
+      class:list={['legal-subnav-link', { 'is-active': current === 'terms' }]}
+      href="/terms"
+      aria-current={current === 'terms' ? 'page' : undefined}
+    >
+      Terms &amp; Conditions
+    </a>
+  </div>
+</nav>
+
+<style>
+  .legal-subnav {
+    margin: 0 0 1.75rem;
+    padding: 0.65rem 1rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, rgba(29, 78, 216, 0.04) 0%, rgba(248, 250, 252, 0.9) 48%, rgba(255, 255, 255, 0.95) 100%);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+    border-left: 3px solid var(--accent);
+  }
+  .legal-subnav-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.65rem;
+    font-size: 0.875rem;
+  }
+  .legal-subnav-link {
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--accent);
+    transition: color 0.15s ease;
+  }
+  .legal-subnav-link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+  .legal-subnav-link.is-active {
+    color: var(--text);
+    font-weight: 700;
+    pointer-events: none;
+    text-decoration: none;
+  }
+  .legal-subnav-sep {
+    color: var(--border);
+    font-weight: 300;
+    user-select: none;
+  }
+</style>
