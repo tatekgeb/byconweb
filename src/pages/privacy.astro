@@ -173,8 +173,14 @@ const description =
       <h2 id="h-contact">11. Contact us</h2>
       <p>
         For questions about this Privacy Policy or our data practices, contact Bycon at{' '}
-        <a href={`mailto:${legalEmail}`}>{legalEmail}</a>. You may also reach our privacy team at{' '}
-        <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>.
+        <a href={`mailto:${legalEmail}`}>{legalEmail}</a>
+        {legalEmail !== privacyEmail ? (
+          <>
+            . You may also reach our privacy team at <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>.
+          </>
+        ) : (
+          '.'
+        )}
       </p>
     </section>
 

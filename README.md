@@ -48,13 +48,10 @@ These values are compiled into static pages at build time.
 The static site only displays email addresses. Mail delivery is handled by your email provider.
 
 1. Choose a provider (Google Workspace, Microsoft 365, Zoho, etc.).
-2. In provider admin, create mailboxes/aliases:
-   - `hello@bycon.com`
-   - `sales@bycon.com`
-   - `privacy@bycon.com`
-   - `security@bycon.com`
-   - `careers@bycon.com`
-   - coworker inboxes like `ben@bycon.com`
+2. In provider admin, create mailboxes/aliases (the site defaults all non-sales links to `admin@bycon.net` except `sales@bycon.net`):
+   - `admin@bycon.net` (contact, privacy, legal, security, careers unless overridden via env)
+   - `sales@bycon.net`
+   - optional coworker inboxes as needed
 3. Add DNS records at your DNS host:
    - **MX** (required for incoming mail)
    - **SPF TXT** (anti-spoofing policy)
