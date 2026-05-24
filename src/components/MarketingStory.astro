@@ -9,6 +9,7 @@ import {
   ctas,
 } from '../lib/marketing';
 import DayBoardScreenshot from './DayBoardScreenshot.astro';
+import ComplianceScreenshot from './ComplianceScreenshot.astro';
 
 interface Props {
   mode?: 'home' | 'solutions';
@@ -111,14 +112,12 @@ const hasProofAccent = headlineParts.length > 1;
 
     <ul class="mkt-grid mkt-proof-shots mkt-proof-shots-featured">
       {proof.screenshots.map((shot) => (
-        <li class:list={['mkt-screenshot-wrap', shot.maskDrivers && 'mkt-screenshot-featured']}>
+        <li class:list={['mkt-screenshot-wrap', shot.screenshot === 'day-board' && 'mkt-screenshot-featured']}>
           {
-            shot.maskDrivers ? (
+            shot.screenshot === 'day-board' ? (
               <DayBoardScreenshot />
-            ) : shot.image ? (
-              <figure class="mkt-shot">
-                <img src={shot.image} alt={shot.title} loading="lazy" decoding="async" />
-              </figure>
+            ) : shot.screenshot === 'compliance' ? (
+              <ComplianceScreenshot />
             ) : (
               <div class="mkt-screenshot-placeholder" aria-hidden="true">
                 <span>Example UI</span>
@@ -188,35 +187,3 @@ const hasProofAccent = headlineParts.length > 1;
   }
 </div>
 
-<style>
-  .mkt-proof-shots {
-    margin-top: 1rem;
-    list-style: none;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0;
-    display: grid;
-    gap: 1.25rem;
-  }
-
-  .mkt-proof-shots-featured {
-    grid-template-columns: 1fr;
-  }
-
-  @media (min-width: 768px) {
-    .mkt-proof-shots-featured {
-      grid-template-columns: 1.4fr 0.9fr;
-      align-items: start;
-    }
-  }
-
-  .mkt-screenshot-featured {
-    grid-column: 1;
-  }
-
-  @media (min-width: 768px) {
-    .mkt-screenshot-featured {
-      grid-row: span 2;
-    }
-  }
-</style>

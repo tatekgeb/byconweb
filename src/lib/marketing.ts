@@ -91,13 +91,14 @@ export const proof = {
   screenshots: [
     {
       title: 'Day board',
-      description: 'Assign routes, track progress, and replan when the day changes.',
-      image: '/marketing/day-board.png',
-      maskDrivers: true,
+      description:
+        'Drag unassigned trips onto driver timelines, track progress, and replan when the day changes.',
+      screenshot: 'day-board' as const,
     },
     {
       title: 'Compliance center',
       description: 'Trip proof, driver documents, and audit-friendly records in one place.',
+      screenshot: 'compliance' as const,
     },
   ],
 };
