@@ -1,9 +1,11 @@
 ---
+import '../styles/marketing.css';
+
 interface Props {
   title: string;
   description?: string;
 }
-const { title, description = 'Bycon builds operations software for transportation providers.' } = Astro.props;
+const { title, description = 'Bycon — transport management for Medicaid NEMT providers with in-house dispatch.' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const pageTitle = `${title} · Bycon`;
 ---
@@ -13,6 +15,9 @@ const pageTitle = `${title} · Bycon`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical.href} />
     <meta property="og:type" content="website" />
@@ -27,15 +32,31 @@ const pageTitle = `${title} · Bycon`;
     <slot name="head" />
     <style is:global>
       :root {
-        --bg: #f8fafc;
+        --bg: #edf1f7;
+        --bg-mesh: #e2eaf4;
         --surface: #ffffff;
-        --text: #0f172a;
-        --muted: #475569;
-        --accent: #1d4ed8;
-        --accent-hover: #1e40af;
-        --border: #e2e8f0;
-        --radius: 12px;
-        --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        --surface-muted: #f6f9fc;
+        --text: #0a1628;
+        --muted: #546275;
+        --accent: #0d9488;
+        --accent-hover: #0f766e;
+        --accent-deep: #115e59;
+        --accent-light: #ccfbf1;
+        --accent-glow: rgba(13, 148, 136, 0.22);
+        --accent-secondary: #4f46e5;
+        --accent-secondary-light: #e0e7ff;
+        --warm: #ea580c;
+        --warm-light: #ffedd5;
+        --warm-glow: rgba(234, 88, 12, 0.12);
+        --border: #d4dde8;
+        --border-strong: #b8c5d6;
+        --radius: 14px;
+        --radius-lg: 22px;
+        --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        --shadow-sm: 0 1px 2px rgba(10, 22, 40, 0.05);
+        --shadow-md: 0 8px 24px -8px rgba(10, 22, 40, 0.12);
+        --shadow-lg: 0 20px 48px -16px rgba(13, 148, 136, 0.18);
+        --header-h: 4rem;
       }
       * {
         box-sizing: border-box;
@@ -43,9 +64,15 @@ const pageTitle = `${title} · Bycon`;
       body {
         margin: 0;
         font-family: var(--font);
-        background: var(--bg);
+        background-color: var(--bg);
+        background-image:
+          radial-gradient(ellipse 80% 50% at 20% -10%, rgba(13, 148, 136, 0.14), transparent 55%),
+          radial-gradient(ellipse 60% 40% at 90% 0%, rgba(79, 70, 229, 0.1), transparent 50%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-mesh) 100%);
+        background-attachment: fixed;
         color: var(--text);
         line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
       }
       a {
         color: var(--accent);
@@ -54,13 +81,19 @@ const pageTitle = `${title} · Bycon`;
         color: var(--accent-hover);
       }
       .wrap {
-        max-width: 960px;
+        max-width: 980px;
         margin: 0 auto;
-        padding: 0 1.25rem;
+        padding: 0 1.35rem;
       }
       header.site {
-        background: var(--surface);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
       }
       header.site .inner {
         display: flex;
@@ -68,46 +101,66 @@ const pageTitle = `${title} · Bycon`;
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 0.75rem 1rem;
-        min-height: 3.5rem;
-        padding: 0.5rem 0;
+        min-height: var(--header-h);
+        padding: 0.35rem 0;
       }
       .logo {
-        font-weight: 700;
-        font-size: 1.125rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 800;
+        font-size: 1.2rem;
         color: var(--text);
         text-decoration: none;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.03em;
+      }
+      .logo::before {
+        content: '';
+        width: 0.55rem;
+        height: 0.55rem;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+        box-shadow: 0 0 0 3px var(--accent-light);
       }
       nav.main-nav {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 0.35rem 1rem;
+        gap: 0.25rem 0.65rem;
         justify-content: flex-end;
       }
       nav.main-nav a {
         font-size: 0.875rem;
-        font-weight: 500;
+        font-weight: 600;
         text-decoration: none;
         color: var(--muted);
         white-space: nowrap;
+        padding: 0.35rem 0.55rem;
+        border-radius: 8px;
+        transition: color 0.15s ease, background 0.15s ease;
       }
       nav.main-nav a:hover {
-        color: var(--accent);
+        color: var(--accent-deep);
+        background: var(--accent-light);
+      }
+      nav.main-nav a.nav-cta {
+        margin-left: 0.25rem;
       }
       .prose {
-        max-width: 40rem;
+        max-width: 44rem;
       }
       .prose h1 {
-        font-size: 1.75rem;
-        font-weight: 700;
+        font-size: clamp(1.75rem, 4vw, 2.125rem);
+        font-weight: 800;
         margin: 0 0 0.5rem;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.03em;
+        color: var(--text);
       }
       .prose h2 {
         font-size: 1.125rem;
-        font-weight: 600;
+        font-weight: 700;
         margin: 1.75rem 0 0.5rem;
+        color: var(--text);
       }
       .prose p,
       .prose li {
@@ -156,8 +209,9 @@ const pageTitle = `${title} · Bycon`;
       }
       footer.site {
         border-top: 1px solid var(--border);
-        background: var(--surface);
-        padding: 1.5rem 0;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(8px);
+        padding: 1.75rem 0;
         font-size: 0.875rem;
         color: var(--muted);
       }
@@ -172,8 +226,7 @@ const pageTitle = `${title} · Bycon`;
           <a href="/solutions">Solutions</a>
           <a href="/pricing">Pricing</a>
           <a href="/about">About</a>
-          <a href="/careers">Careers</a>
-          <a href="/contact">Contact</a>
+          <a href="/contact" class="nav-cta">Request demo</a>
         </nav>
       </div>
     </header>

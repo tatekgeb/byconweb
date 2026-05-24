@@ -1,32 +1,53 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { getSite } from '../lib/site';
+import { ctas } from '../lib/marketing';
 
-const { contactEmail, salesEmail, tmsUrl } = getSite();
+const { salesEmail, salesPhone, tmsUrl } = getSite();
+
+const intentParam = Astro.url.searchParams.get('intent');
+const defaultIntent = intentParam === 'trial' ? 'trial' : 'demo';
 ---
 <Layout
   title="Contact"
-  description="Contact Bycon for product questions, demos, and partnership inquiries."
+  description="Request a Bycon demo or start a free 30-day trial for Medicaid NEMT dispatch."
 >
-  <article class="prose">
-    <h1>Contact</h1>
-    <p class="lead">
-      Whether you are exploring the TMS, need a walkthrough, or want to talk about a larger deployment, we read every
-      message.
-    </p>
-    <h2>Product &amp; general</h2>
-    <p>
-      <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
-    </p>
-    <h2>Sales &amp; demos</h2>
-    <p>
-      <a href={`mailto:${salesEmail}`}>{salesEmail}</a>
-    </p>
-    <h2>Already a customer?</h2>
-    <p>
-      Your team may have a dedicated support path; if you are unsure, use the product address above and we will route
-      you. The live application is hosted separately at{' '}
-      <a href={tmsUrl} rel="noopener noreferrer">{tmsUrl.replace(/^https?:\/\//, '')}</a>.
-    </p>
-  </article>
+  <div class="contact-layout">
+    <div>
+      <span class="mkt-tag">Get started</span>
+      <h1 class="contact-page-title">Request a demo or trial</h1>
+      <p class="contact-page-lead">
+        Request a demo or start your free 30-day trial. {ctas.trialNote}
+      </p>
+
+      <div class="contact-form-wrap">
+        <ContactForm defaultIntent={defaultIntent} />
+      </div>
+    </div>
+
+    <aside class="contact-aside">
+      <h2>Prefer email?</h2>
+      <p>
+        <a href={`mailto:${salesEmail}?subject=Bycon%20demo%20or%20trial`}>{salesEmail}</a>
+      </p>
+
+      {
+        salesPhone && (
+          <>
+            <h2>Phone</h2>
+            <p>
+              <a href={`tel:${salesPhone.replace(/\D/g, '')}`}>{salesPhone}</a>
+            </p>
+          </>
+        )
+      }
+
+      <h2>Existing customers</h2>
+      <p>
+        The live TMS is at{' '}
+        <a href={tmsUrl} rel="noopener noreferrer">{tmsUrl.replace(/^https?:\/\//, '')}</a>.
+      </p>
+    </aside>
+  </div>
 </Layout>

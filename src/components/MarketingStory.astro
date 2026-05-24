@@ -1,0 +1,184 @@
+---
+import {
+  audience,
+  pains,
+  outcomes,
+  solutionsOutcomes,
+  integrations,
+  proof,
+  ctas,
+} from '../lib/marketing';
+
+interface Props {
+  mode?: 'home' | 'solutions';
+  showHero?: boolean;
+  showCtaBand?: boolean;
+}
+
+const { mode = 'home', showHero = true, showCtaBand = true } = Astro.props;
+const isSolutions = mode === 'solutions';
+const outcomeItems = isSolutions ? [...outcomes, ...solutionsOutcomes] : outcomes;
+
+const headlineParts = audience.headline.split('proof');
+const hasProofAccent = headlineParts.length > 1;
+---
+
+<div class="mkt">
+  {
+    showHero && (
+      <section class="mkt-hero mkt-section" aria-labelledby="mkt-heading">
+        <p class="mkt-eyebrow">{audience.eyebrow}</p>
+        <h1 id="mkt-heading" class="mkt-h1">
+          {
+            hasProofAccent ? (
+              <>
+                {headlineParts[0]}
+                <span class="mkt-h1-accent">proof</span>
+                {headlineParts.slice(1).join('proof')}
+              </>
+            ) : (
+              audience.headline
+            )
+          }
+        </h1>
+        <p class="mkt-lead">{audience.lead}</p>
+        <div class="mkt-cta-row">
+          <a class="mkt-btn mkt-btn-primary" href={ctas.demo.href}>
+            {ctas.demo.label}
+          </a>
+          <a class="mkt-btn mkt-btn-secondary" href={ctas.trial.href}>
+            {ctas.trial.label}
+          </a>
+        </div>
+        <p class="mkt-cta-note">{ctas.trialNote}</p>
+      </section>
+    )
+  }
+
+  <section class="mkt-section mkt-section-pain" aria-labelledby="pain-heading">
+    <div class="mkt-section-head">
+      <span class="mkt-tag mkt-tag-warm">The problem</span>
+      <h2 id="pain-heading" class="mkt-h2">Sound familiar?</h2>
+      <p class="mkt-section-desc">
+        Medicaid NEMT dispatch teams lose hours to problems the day board and compliance center should prevent.
+      </p>
+    </div>
+    <ul class="mkt-grid mkt-grid-3">
+      {pains.map((item) => (
+        <li class="mkt-card mkt-card-pain">
+          <span class="mkt-card-title">{item.title}</span>
+          <span class="mkt-card-desc">{item.description}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="mkt-section" aria-labelledby="outcomes-heading">
+    <div class="mkt-section-head">
+      <span class="mkt-tag">Outcomes</span>
+      <h2 id="outcomes-heading" class="mkt-h2">
+        {isSolutions ? 'What you get with Bycon TMS' : 'What changes when dispatch runs on Bycon'}
+      </h2>
+      <p class="mkt-section-desc">
+        {isSolutions
+          ? 'Outcomes for in-house dispatch—not a feature checklist. Your deployment may vary by configuration and integrations.'
+          : 'Outcomes built for Medicaid NEMT providers—not another generic TMS feature list.'}
+      </p>
+    </div>
+    <ul class="mkt-grid mkt-grid-2">
+      {outcomeItems.map((item) => (
+        <li class="mkt-card mkt-card-outcome">
+          <span class="mkt-card-title">{item.title}</span>
+          <span class="mkt-card-desc">{item.description}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="mkt-section" aria-labelledby="proof-heading">
+    <div class="mkt-section-head">
+      <span class="mkt-tag mkt-tag-indigo">Proof</span>
+      <h2 id="proof-heading" class="mkt-h2">See it in action</h2>
+      <p class="mkt-section-desc">{proof.videoHint}</p>
+    </div>
+
+    <div class="mkt-proof-video" aria-label="Product video placeholder">
+      <span class="mkt-proof-video-label">{proof.videoLabel}</span>
+      <p class="mkt-proof-video-title">{proof.videoPlaceholder}</p>
+      <p class="mkt-proof-video-hint">{proof.videoHint}</p>
+    </div>
+
+    <ul class="mkt-grid mkt-grid-2 mkt-proof-shots">
+      {proof.screenshots.map((shot) => (
+        <li class="mkt-screenshot-wrap">
+          <div class="mkt-screenshot-placeholder" aria-hidden="true">
+            <span>Example UI</span>
+            <strong>{shot.title}</strong>
+          </div>
+          <p class="mkt-screenshot-caption">{shot.description}</p>
+        </li>
+      ))}
+    </ul>
+
+    <blockquote class="mkt-quote">
+      “{proof.quote}”
+      <cite>— {proof.quoteAttribution}</cite>
+    </blockquote>
+  </section>
+
+  <section class="mkt-section" aria-labelledby="integrations-heading">
+    <div class="mkt-section-head">
+      <span class="mkt-tag">Integrations</span>
+      <h2 id="integrations-heading" class="mkt-h2">Honest scope on broker sync</h2>
+      <p class="mkt-section-desc">We tell you what works today and what is on the roadmap—no overselling integrations.</p>
+    </div>
+    <div class="mkt-integrations">
+      <div class="mkt-integrations-block is-today">
+        <h3>Today</h3>
+        <ul>
+          {integrations.today.map((item) => (
+            <li>
+              <strong>{item.name}</strong> — {item.description}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="mkt-integrations-block is-roadmap">
+        <h3>Roadmap</h3>
+        <ul>
+          {integrations.roadmap.map((item) => (
+            <li>
+              <strong>{item.name}</strong> — {item.description}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <p class="mkt-integrations-disclaimer">{integrations.disclaimer}</p>
+    </div>
+  </section>
+
+  {
+    showCtaBand && (
+      <section class="mkt-cta-band" aria-labelledby="cta-band-heading">
+        <h2 id="cta-band-heading" class="mkt-h2">Ready to see your trips on one day board?</h2>
+        <p class="mkt-section-desc">
+          Book a walkthrough or start a free 30-day trial. {ctas.replySla}
+        </p>
+        <div class="mkt-cta-row">
+          <a class="mkt-btn mkt-btn-primary" href={ctas.demo.href}>
+            {ctas.demo.label}
+          </a>
+          <a class="mkt-btn mkt-btn-secondary" href={ctas.trial.href}>
+            {ctas.trial.label}
+          </a>
+        </div>
+      </section>
+    )
+  }
+</div>
+
+<style>
+  .mkt-proof-shots {
+    margin-top: 1rem;
+  }
+</style>

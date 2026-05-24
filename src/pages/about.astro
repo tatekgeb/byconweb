@@ -1,157 +1,49 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const description =
-  'About Bycon and our transport management platform: trip lifecycle, scheduling, communications, analytics, driver tools, and administration—built for broker-led and NEMT-style operations.';
+import { aboutCopy, outcomes, integrations, ctas } from '../lib/marketing';
 ---
-<Layout title="About" description={description}>
+<Layout
+  title="About"
+  description="About Bycon — transport management built for Medicaid NEMT providers with in-house dispatch."
+>
   <article class="prose about-page">
+    <span class="mkt-tag">About</span>
     <h1>About Bycon</h1>
-    <p class="lead">
-      We build operations software for teams that move people—where schedules slip, documentation matters, and the record
-      has to hold up after the trip is done. The capabilities below describe our transport management platform as it exists
-      in the product today; your deployment can vary by configuration and integrations.
-    </p>
-    <p class="disclaimer">
-      Capabilities depend on configuration, roles, and integrations. Nothing here is a legal or regulatory guarantee—review
-      with counsel where compliance obligations apply.
-    </p>
+    <p class="lead">{aboutCopy.lead}</p>
+    <p class="disclaimer">{aboutCopy.disclaimer}</p>
 
-    <nav class="about-toc" aria-label="On this page">
-      <span class="about-toc-label">On this page</span>
-      <ul>
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#trips">Trips &amp; demand</a></li>
-        <li><a href="#scheduling">Scheduling &amp; routing</a></li>
-        <li><a href="#communication">Communication</a></li>
-        <li><a href="#analytics">Analytics &amp; reporting</a></li>
-        <li><a href="#workforce">Drivers &amp; workforce</a></li>
-        <li><a href="#admin">Administration</a></li>
-      </ul>
-    </nav>
+    <h2>What we help dispatch teams achieve</h2>
+    <ul>
+      {outcomes.map((item) => (
+        <li>
+          <strong>{item.title}</strong> — {item.description}
+        </li>
+      ))}
+    </ul>
 
-    <section id="overview" class="about-section">
-      <h2>Overview</h2>
-      <p>
-        The platform is a <strong>multi-company transport operations system</strong> with role-based access for super
-        administrators, company administrators, dispatchers, and drivers. It supports the arc from trip intake and planning
-        through scheduling, execution, client and driver communication, and performance reporting—suited to broker-led and
-        NEMT-style operations where trip history, timeliness, and defensible records matter.
+    <h2>Broker integrations</h2>
+    <p>
+      <strong>Today — Ecolane:</strong> {integrations.today[0].description}
+    </p>
+    <p>
+      <strong>Roadmap — MediDrive:</strong> {integrations.roadmap[0].description}
+    </p>
+    <p style="font-size: 0.8125rem;">{integrations.disclaimer}</p>
+
+    <div class="mkt-cta-row" style="margin-top: 1.5rem;">
+      <a class="mkt-btn mkt-btn-primary" href={ctas.demo.href}>{ctas.demo.label}</a>
+      <a class="mkt-btn mkt-btn-secondary" href={ctas.trial.href}>{ctas.trial.label}</a>
+    </div>
+    <p class="mkt-cta-note">{ctas.trialNote}</p>
+
+    <details class="about-details">
+      <summary>Technical capability overview</summary>
+      <p style="font-size: 0.875rem; margin-top: 0.75rem;">
+        For diligence: the platform covers trip lifecycle management, day-level scheduling and routing, client and driver
+        SMS, operations reporting, driver documents and timesheets, and per-company administration. Capabilities vary by
+        role and configuration. See <a href="/solutions">Solutions</a> for customer-facing outcomes.
       </p>
-    </section>
-
-    <section id="trips" class="about-section">
-      <h2>Trip and demand management</h2>
-      <ul>
-        <li>
-          <strong>Trip lifecycle</strong> from broker-style assignment through scheduling and field outcomes—completed,
-          canceled, no-show, combined, and related statuses as modeled in the product.
-        </li>
-        <li>
-          <strong>Create, search, filter, and edit trips</strong>, including operational preferences such as grouping,
-          round trips, driver requirements, and assignment locking.
-        </li>
-        <li>
-          <strong>CSV import</strong> with validation and company-level defaults (for example transportation provider).
-        </li>
-        <li>
-          <strong>Broker integration workflows</strong> where configured—such as Ecolane-oriented export/import and pushing run
-          or vehicle assignments back to the broker system.
-        </li>
-        <li><strong>Dispatch-oriented tagging</strong> on trips for prioritization and coordination.</li>
-        <li>
-          <strong>Blocked clients</strong> to prevent transport when policy or safety requires it.
-        </li>
-      </ul>
-    </section>
-
-    <section id="scheduling" class="about-section">
-      <h2>Scheduling, routing, and optimization</h2>
-      <ul>
-        <li>
-          <strong>Route generation</strong> from daily trip sets using configurable optimization (including constraint-based
-          routing and alternate planning modes), with extensive configuration—batching, wait limits, optimizer selection, and
-          related parameters.
-        </li>
-        <li>
-          <strong>Day-level schedules and routes</strong>: view, adjust, regenerate, and re-optimize as the day changes.
-        </li>
-        <li>
-          <strong>Operational adjustments</strong> such as reassigning work, swapping drivers between routes, and related
-          flows exposed through the scheduling API and UI.
-        </li>
-        <li>
-          <strong>Schedule periods</strong> and linkage to <strong>driver timesheets</strong> where the product ties work
-          windows to payroll-style tracking.
-        </li>
-      </ul>
-    </section>
-
-    <section id="communication" class="about-section">
-      <h2>Client and driver communication</h2>
-      <ul>
-        <li>
-          <strong>SMS to clients</strong> for trip-related messaging—confirmations, reminders, cancellations, driver en
-          route—including bulk sends with safeguards.
-        </li>
-        <li>
-          <strong>Driver SMS</strong>: broadcast and targeted messaging, with support for inbound driver replies where
-          implemented.
-        </li>
-        <li><strong>Opt-out handling</strong> for SMS to respect subscriber preferences.</li>
-      </ul>
-    </section>
-
-    <section id="analytics" class="about-section">
-      <h2>Analytics and reporting</h2>
-      <ul>
-        <li>
-          <strong>Operations reporting</strong> over user-selected date ranges: trip volumes, status mix, mileage, on-time
-          metrics, and driver performance summaries.
-        </li>
-        <li>
-          <strong>Focused report views</strong> in the application—including on-time, mileage, trip- and driver-level
-          analyses, and compensation-oriented reporting where role permissions allow.
-        </li>
-      </ul>
-    </section>
-
-    <section id="workforce" class="about-section">
-      <h2>Driver and workforce tools</h2>
-      <ul>
-        <li>
-          <strong>Driver records and documents</strong> with upload and expiry awareness (including UI alerts where wired).
-        </li>
-        <li><strong>Timesheets</strong>: driver submission and administrative review.</li>
-        <li>
-          <strong>Driver-facing web experience</strong>: assigned routes, schedule visibility, timesheets, and
-          documents—separate from the dispatcher console.
-        </li>
-      </ul>
-    </section>
-
-    <section id="admin" class="about-section">
-      <h2>Administration and platform</h2>
-      <ul>
-        <li>
-          <strong>Per-company administration</strong>: users, settings, and integration credentials (such as broker
-          credentials) managed in the product.
-        </li>
-        <li>
-          <strong>Super-administration</strong> of companies and cross-company users where applicable.
-        </li>
-        <li><strong>In-app notifications</strong> and Help / FAQ content.</li>
-        <li>
-          <strong>Dispatcher shortcuts</strong>: natural-language style commands with rule-based interpretation and
-          confirmation for destructive or sensitive actions—not a general-purpose open-ended assistant.
-        </li>
-      </ul>
-    </section>
-
-    <p style="margin-top: 2rem;">
-      For product access and positioning, see <a href="/solutions">Solutions</a>. To talk about fit for your network,
-      <a href="/contact">contact us</a>.
-    </p>
+    </details>
   </article>
 
   <style>
@@ -167,46 +59,19 @@ const description =
       border: 1px solid var(--border);
       border-radius: var(--radius);
     }
-    .about-toc {
-      margin: 0 0 2rem;
+    .about-details {
+      margin-top: 2rem;
       padding: 1rem 1.1rem;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
-    }
-    .about-toc-label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--muted);
-      margin-bottom: 0.65rem;
-    }
-    .about-toc ul {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem 1rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .about-toc li {
-      margin: 0;
-    }
-    .about-toc a {
       font-size: 0.875rem;
-      font-weight: 500;
-      text-decoration: none;
-      color: var(--accent);
+      color: var(--muted);
     }
-    .about-toc a:hover {
-      color: var(--accent-hover);
-      text-decoration: underline;
-    }
-    .about-section h2 {
-      scroll-margin-top: 5rem;
+    .about-details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--text);
     }
   </style>
 </Layout>

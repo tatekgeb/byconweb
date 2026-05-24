@@ -1,60 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import MarketingStory from '../components/MarketingStory.astro';
 import { getSite } from '../lib/site';
 
-const { tmsUrl: tmsBase } = getSite();
+const { tmsUrl } = getSite();
 ---
 <Layout
   title="Solutions"
-  description="Bycon solutions — transport management for NEMT and broker operations."
+  description="Bycon TMS for Medicaid NEMT dispatch — day board, compliance center, automated Ecolane trip sync, MediDrive API on roadmap."
 >
-  <h1 style="font-size: 1.75rem; font-weight: 700; margin: 0 0 0.5rem; letter-spacing: -0.02em;">Solutions</h1>
-  <p style="color: var(--muted); margin: 0 0 2rem; max-width: 40rem;">
-    What we ship today, and room to grow. Each product line gets its own experience at a dedicated URL.
-  </p>
+  <MarketingStory mode="solutions" />
 
-  <article
-    style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.5rem 1.25rem; max-width: 42rem; box-shadow: 0 1px 2px rgba(15,23,42,0.04);"
-  >
-    <h2 style="margin: 0 0 0.35rem; font-size: 1.25rem;">Transport management (TMS)</h2>
-    <p style="margin: 0 0 1rem; color: var(--muted); font-size: 0.9375rem;">
-      A transport management system aimed at <strong>non-emergency medical transportation (NEMT)</strong> and similar broker-led networks—where
-      documentation, timeliness, and defensible trip history matter as much as the route itself.
-    </p>
-
-    <h3 style="font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 1.25rem 0 0.5rem;">
-      What operators gain
-    </h3>
-    <ul style="margin: 0; padding-left: 1.15rem; color: var(--text); font-size: 0.9375rem;">
-      <li style="margin-bottom: 0.35rem;">
-        <strong>Compliance &amp; audit posture</strong> — fewer documentation gaps; workflows that support Medicaid-style scrutiny and audit readiness.
-      </li>
-      <li style="margin-bottom: 0.35rem;">
-        <strong>Broker KPIs</strong> — clearer visibility into on-time performance, completion, and service quality so teams can manage to the numbers.
-      </li>
-      <li style="margin-bottom: 0.35rem;">
-        <strong>Standardized trip data</strong> — consistent trip logs, structured pickup/dropoff context, and a cleaner record of what happened in the field.
-      </li>
-      <li style="margin-bottom: 0">
-        <strong>Day-to-day operations</strong> — client messaging to support completion, replanning when reality diverges from the plan, and room to extend as you grow.
-      </li>
-    </ul>
-
-    <p style="margin: 1.5rem 0 0;">
-      <a
-        href={tmsBase}
-        rel="noopener noreferrer"
-        style="display: inline-block; padding: 0.55rem 1rem; background: var(--accent); color: #fff !important; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.875rem;"
-      >
-        Open TMS
-      </a>
-      <span style="display: inline-block; margin-left: 0.75rem; font-size: 0.8125rem; color: var(--muted);">
-        ({tmsBase.replace(/^https?:\/\//, '')})
-      </span>
-    </p>
-  </article>
-
-  <p style="margin-top: 2rem; font-size: 0.875rem; color: var(--muted);">
-    Additional products will appear here as they launch—same company, separate URLs where it makes sense.
+  <p style="margin-top: 2rem; font-size: 0.875rem; color: var(--muted); max-width: 40rem;">
+    Existing customers: the live application is at{' '}
+    <a href={tmsUrl} rel="noopener noreferrer">{tmsUrl.replace(/^https?:\/\//, '')}</a>.
   </p>
 </Layout>
