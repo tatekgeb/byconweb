@@ -110,9 +110,10 @@ const hasProofAccent = headlineParts.length > 1;
       <p class="mkt-proof-video-hint">{proof.videoHint}</p>
     </div>
 
-    <ul class="mkt-grid mkt-proof-shots mkt-proof-shots-featured">
+    <ul class="mkt-grid mkt-proof-shots">
       {proof.screenshots.map((shot) => (
-        <li class:list={['mkt-screenshot-wrap', shot.screenshot === 'day-board' && 'mkt-screenshot-featured']}>
+        <li class="mkt-screenshot-wrap">
+          <p class="mkt-screenshot-title">{shot.title}</p>
           {
             shot.screenshot === 'day-board' ? (
               <DayBoardScreenshot />
