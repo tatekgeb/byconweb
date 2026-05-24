@@ -1,0 +1,25 @@
+---
+import { getScreenshot, type ScreenshotVariant } from '../lib/screenshots';
+
+interface Props {
+  variant: ScreenshotVariant;
+}
+
+const { variant } = Astro.props;
+const { src, alt, masks } = getScreenshot(variant);
+---
+
+<div class="mkt-shot-frame">
+  <img src={src} width="1024" height="611" alt={alt} loading="lazy" decoding="async" />
+  <div class="mkt-shot-masks" aria-hidden="true">
+    {
+      masks.map((mask) => (
+        <span
+          class="mkt-shot-mask"
+          style={`top: ${mask.top}%; left: ${mask.left}%; width: ${mask.width}%; height: ${mask.height}%;`}
+        />
+      ))
+    }
+  </div>
+  <span class="mkt-shot-caption">Driver names redacted</span>
+</div>

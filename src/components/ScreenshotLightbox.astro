@@ -1,0 +1,42 @@
+<dialog id="screenshot-lightbox" class="mkt-lightbox" aria-labelledby="screenshot-lightbox-title">
+  <form method="dialog" class="mkt-lightbox-toolbar">
+    <button type="submit" class="mkt-lightbox-close" aria-label="Close expanded screenshot">Close</button>
+  </form>
+  <div class="mkt-lightbox-content">
+    <h3 id="screenshot-lightbox-title" class="mkt-lightbox-title"></h3>
+    <div class="mkt-lightbox-frame" id="screenshot-lightbox-frame"></div>
+    <p id="screenshot-lightbox-caption" class="mkt-lightbox-caption"></p>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('screenshot-lightbox') as HTMLDialogElement | null;
+  const titleEl = document.getElementById('screenshot-lightbox-title');
+  const captionEl = document.getElementById('screenshot-lightbox-caption');
+  const frameHost = document.getElementById('screenshot-lightbox-frame');
+
+  if (dialog && titleEl && captionEl && frameHost) {
+    document.querySelectorAll<HTMLButtonElement>('[data-lightbox-open]').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const sourceFrame = trigger.querySelector('.mkt-shot-frame');
+        if (!sourceFrame) return;
+
+        titleEl.textContent = trigger.dataset.lightboxTitle || '';
+        captionEl.textContent = trigger.dataset.lightboxCaption || '';
+
+        frameHost.replaceChildren(sourceFrame.cloneNode(true));
+        dialog.showModal();
+      });
+    });
+
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+
+    dialog.addEventListener('close', () => {
+      frameHost.replaceChildren();
+    });
+  }
+</script>

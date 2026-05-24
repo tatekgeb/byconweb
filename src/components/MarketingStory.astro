@@ -8,8 +8,8 @@ import {
   proof,
   ctas,
 } from '../lib/marketing';
-import DayBoardScreenshot from './DayBoardScreenshot.astro';
-import ComplianceScreenshot from './ComplianceScreenshot.astro';
+import ExpandableScreenshot from './ExpandableScreenshot.astro';
+import ScreenshotLightbox from './ScreenshotLightbox.astro';
 
 interface Props {
   mode?: 'home' | 'solutions';
@@ -113,23 +113,29 @@ const hasProofAccent = headlineParts.length > 1;
     <ul class="mkt-grid mkt-proof-shots">
       {proof.screenshots.map((shot) => (
         <li class="mkt-screenshot-wrap">
-          <p class="mkt-screenshot-title">{shot.title}</p>
           {
-            shot.screenshot === 'day-board' ? (
-              <DayBoardScreenshot />
-            ) : shot.screenshot === 'compliance' ? (
-              <ComplianceScreenshot />
+            shot.screenshot === 'day-board' || shot.screenshot === 'compliance' ? (
+              <ExpandableScreenshot
+                variant={shot.screenshot}
+                title={shot.title}
+                description={shot.description}
+              />
             ) : (
-              <div class="mkt-screenshot-placeholder" aria-hidden="true">
-                <span>Example UI</span>
-                <strong>{shot.title}</strong>
-              </div>
+              <>
+                <p class="mkt-screenshot-title">{shot.title}</p>
+                <div class="mkt-screenshot-placeholder" aria-hidden="true">
+                  <span>Example UI</span>
+                  <strong>{shot.title}</strong>
+                </div>
+                <p class="mkt-screenshot-caption">{shot.description}</p>
+              </>
             )
           }
-          <p class="mkt-screenshot-caption">{shot.description}</p>
         </li>
       ))}
     </ul>
+
+    <ScreenshotLightbox />
 
     <blockquote class="mkt-quote">
       “{proof.quote}”

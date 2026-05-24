@@ -1,0 +1,34 @@
+---
+import ProductScreenshotFrame from './ProductScreenshotFrame.astro';
+import { getScreenshot, type ScreenshotVariant } from '../lib/screenshots';
+
+interface Props {
+  variant: ScreenshotVariant;
+  title: string;
+  description: string;
+}
+
+const { variant, title, description } = Astro.props;
+const { frameClass } = getScreenshot(variant);
+const expandLabel = `Expand ${title} screenshot`;
+---
+
+<button
+  type="button"
+  class="mkt-shot-expand"
+  data-lightbox-open
+  data-lightbox-variant={variant}
+  data-lightbox-title={title}
+  data-lightbox-caption={description}
+  aria-label={expandLabel}
+>
+  <span class="mkt-screenshot-title">{title}</span>
+  <span class:list={['mkt-shot', 'mkt-shot-thumb', frameClass]}>
+    <ProductScreenshotFrame variant={variant} />
+    <span class="mkt-shot-expand-hint" aria-hidden="true">
+      <span class="mkt-shot-expand-icon">⤢</span>
+      Click to expand
+    </span>
+  </span>
+  <span class="mkt-screenshot-caption">{description}</span>
+</button>
