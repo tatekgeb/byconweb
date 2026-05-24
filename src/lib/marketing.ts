@@ -92,6 +92,8 @@ export const proof = {
     {
       title: 'Day board',
       description: 'Assign routes, track progress, and replan when the day changes.',
+      image: '/marketing/day-board.png',
+      maskDrivers: true,
     },
     {
       title: 'Compliance center',

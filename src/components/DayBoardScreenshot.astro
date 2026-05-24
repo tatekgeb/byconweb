@@ -1,0 +1,91 @@
+---
+/** Dispatch day board — driver names masked for privacy. */
+const src = '/marketing/day-board.png';
+const alt =
+  'Bycon dispatch day board showing unassigned trips, driver timelines, and trip blocks. Driver names redacted.';
+
+/** Mask bands (% of image) aligned to the six driver rows in day-board.png (1024×611). */
+const driverMasks = [
+  { top: 39.8, height: 8.6 },
+  { top: 49.2, height: 8.6 },
+  { top: 58.6, height: 8.6 },
+  { top: 68.0, height: 8.6 },
+  { top: 77.4, height: 8.6 },
+  { top: 86.8, height: 8.2 },
+];
+---
+
+<figure class="mkt-shot mkt-shot-dayboard">
+  <img src={src} width="1024" height="611" alt={alt} loading="lazy" decoding="async" />
+  <div class="mkt-shot-masks" aria-hidden="true">
+    {
+      driverMasks.map((mask) => (
+        <span
+          class="mkt-shot-mask"
+          style={`top: ${mask.top}%; height: ${mask.height}%;`}
+        />
+      ))
+    }
+  </div>
+  <figcaption class="mkt-shot-caption">Driver names redacted</figcaption>
+</figure>
+
+<style>
+  .mkt-shot {
+    position: relative;
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-md);
+    background: var(--surface);
+  }
+
+  .mkt-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+
+  .mkt-shot-masks {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .mkt-shot-mask {
+    position: absolute;
+    left: 0;
+    width: 15.5%;
+    background: linear-gradient(
+      90deg,
+      rgba(248, 250, 252, 0.97) 0%,
+      rgba(241, 245, 249, 0.94) 75%,
+      rgba(241, 245, 249, 0.55) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(203, 213, 225, 0.65);
+  }
+
+  .mkt-shot-caption {
+    position: absolute;
+    bottom: 0.55rem;
+    left: 0.55rem;
+    margin: 0;
+    padding: 0.2rem 0.45rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+
+  .mkt-shot-dayboard {
+    border-radius: var(--radius-lg);
+  }
+</style>
