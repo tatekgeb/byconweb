@@ -104,11 +104,18 @@ const hasProofAccent = headlineParts.length > 1;
       <p class="mkt-section-desc">{proof.videoHint}</p>
     </div>
 
-    <div class="mkt-proof-video" aria-label="Product video placeholder">
-      <span class="mkt-proof-video-label">{proof.videoLabel}</span>
-      <p class="mkt-proof-video-title">{proof.videoPlaceholder}</p>
-      <p class="mkt-proof-video-hint">{proof.videoHint}</p>
-    </div>
+    <figure class="mkt-proof-video-wrap" aria-labelledby="proof-video-label">
+      <span id="proof-video-label" class="mkt-proof-video-label">{proof.videoLabel}</span>
+      <video
+        class="mkt-proof-video-player"
+        controls
+        playsinline
+        preload="metadata"
+        src={proof.videoSrc}
+      >
+        <p>Your browser does not support embedded video. <a href={proof.videoSrc}>Download the walkthrough</a>.</p>
+      </video>
+    </figure>
 
     <ul class="mkt-grid mkt-proof-shots">
       {proof.screenshots.map((shot) => (

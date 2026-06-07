@@ -83,8 +83,8 @@ export const integrations = {
 
 export const proof = {
   videoLabel: 'Product walkthrough',
-  videoPlaceholder: 'Video coming soon',
-  videoHint: 'Request a demo for a live tour of the day board and compliance center.',
+  videoSrc: '/marketing/bycon_product_walkthrough.mp4',
+  videoHint: 'A quick tour of dispatch, the day board, and compliance workflows.',
   quote:
     'Built for dispatch teams that need proof on every Medicaid trip—not another spreadsheet at the end of the day.',
   quoteAttribution: 'Bycon',
