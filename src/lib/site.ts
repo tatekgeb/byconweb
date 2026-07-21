@@ -4,7 +4,7 @@ export function getSite() {
   const admin = 'admin@bycon.net';
   const privacy = import.meta.env.PUBLIC_PRIVACY_EMAIL || admin;
   const formspreeId = import.meta.env.PUBLIC_FORMSPREE_FORM_ID || 'maqkbkjk';
-  const salesPhone = import.meta.env.PUBLIC_SALES_PHONE?.trim() || '(970) 489-8768';
+  const salesPhone = import.meta.env.PUBLIC_SALES_PHONE?.trim() || '732-491-3008';
   return {
     tmsUrl: tms,
     contactEmail: import.meta.env.PUBLIC_CONTACT_EMAIL || admin,
